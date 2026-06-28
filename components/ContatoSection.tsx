@@ -11,6 +11,11 @@ export default function ContatoSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const subject = encodeURIComponent(form.assunto || "Contato via portfólio");
+    const body = encodeURIComponent(
+      `Nome: ${form.nome}\nE-mail: ${form.email}\n\nMensagem:\n${form.mensagem}`
+    );
+    window.location.href = `mailto:pereira-cn@hotmail.com?subject=${subject}&body=${body}`;
     setEnviado(true);
     setForm({ nome: "", email: "", assunto: "", mensagem: "" });
     setTimeout(() => setEnviado(false), 5000);

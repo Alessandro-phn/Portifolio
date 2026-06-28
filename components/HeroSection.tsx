@@ -104,7 +104,7 @@ export default function HeroSection() {
             Ver projetos <ArrowRight size={13} />
           </a>
           <a
-            href="/cv-alessandro-pereira.pdf"
+            href="/Alessandro_Guimaraes_Pereira_CV.pdf"
             download
             style={{
               display: "inline-flex",

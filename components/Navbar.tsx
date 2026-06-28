@@ -79,7 +79,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="/cv-alessandro-pereira.pdf"
+            href="/Alessandro_Guimaraes_Pereira_CV.pdf"
             download
             style={{
               fontSize: "0.75rem",
@@ -144,7 +144,7 @@ export default function Navbar() {
             ))}
             <div style={{ borderTop: "1px solid var(--border)", paddingTop: "1rem" }}>
               <a
-                href="/cv-alessandro-pereira.pdf"
+                href="/Alessandro_Guimaraes_Pereira_CV.pdf"
                 download
                 style={{
                   fontSize: "0.875rem",
