@@ -15,7 +15,12 @@ export default function ContatoSection() {
     const body = encodeURIComponent(
       `Nome: ${form.nome}\nE-mail: ${form.email}\n\nMensagem:\n${form.mensagem}`
     );
-    window.location.href = `mailto:pereira-cn@hotmail.com?subject=${subject}&body=${body}`;
+    // Create and click an <a> tag — more reliable than window.location.href
+    const a = document.createElement("a");
+    a.href = `mailto:pereira-cn@hotmail.com?subject=${subject}&body=${body}`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
     setEnviado(true);
     setForm({ nome: "", email: "", assunto: "", mensagem: "" });
     setTimeout(() => setEnviado(false), 5000);
