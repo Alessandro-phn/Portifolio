@@ -6,7 +6,7 @@ const formacao = [
   {
     grau: "Graduação",
     titulo: "Engenharia da Computação",
-    status: "Cursando",
+    status: "Concluído",
   },
   {
     grau: "Pós-Graduação",
@@ -16,7 +16,7 @@ const formacao = [
   {
     grau: "MBA",
     titulo: "Gestão Estratégica de Compras",
-    status: "Concluído",
+    status: "Cursando",
   },
   {
     grau: "MBA",
