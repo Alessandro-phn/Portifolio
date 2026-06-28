@@ -1,12 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import Link from "next/link";
 
-const navLinks = [
+const links = [
   { label: "Sobre", href: "#sobre" },
   { label: "Jornada", href: "#jornada" },
-  { label: "Experiência", href: "#experiencia" },
   { label: "Projetos", href: "#projetos" },
   { label: "Competências", href: "#competencias" },
   { label: "Contato", href: "#contato" },
@@ -14,79 +12,146 @@ const navLinks = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const fn = () => setScrolled(window.scrollY > 30);
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white border-b border-slate-200 shadow-sm"
-          : "bg-white/90 backdrop-blur-sm"
-      }`}
+    <header
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        background: "#FFFFFF",
+        borderBottom: scrolled ? "1px solid #E2E8F0" : "1px solid transparent",
+        transition: "border-color 0.3s",
+      }}
     >
-      <div className="max-w-5xl mx-auto px-6 flex items-center justify-between h-14">
-        <Link
-          href="/"
-          className="font-semibold text-slate-900 tracking-tight text-sm hover:text-blue-900 transition-colors"
-          style={{ fontFamily: "var(--font-playfair)" }}
+      <div
+        style={{
+          maxWidth: 1024,
+          margin: "0 auto",
+          padding: "0 2rem",
+          height: 56,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        {/* Wordmark */}
+        <a
+          href="#home"
+          style={{
+            fontFamily: "var(--font-inter)",
+            fontWeight: 600,
+            fontSize: "0.875rem",
+            color: "var(--navy-dark)",
+            letterSpacing: "-0.01em",
+            textDecoration: "none",
+          }}
         >
-          Alessandro G. Pereira
-        </Link>
+          Alessandro Pereira
+        </a>
 
-        <div className="hidden md:flex items-center gap-7">
-          {navLinks.map((link) => (
+        {/* Desktop nav */}
+        <nav style={{ display: "flex", alignItems: "center", gap: "2rem" }} className="hidden md:flex">
+          {links.map((l) => (
             <a
-              key={link.href}
-              href={link.href}
-              className="text-xs font-medium text-slate-500 hover:text-slate-900 transition-colors tracking-wide"
+              key={l.href}
+              href={l.href}
+              style={{
+                fontSize: "0.8125rem",
+                color: "var(--text-muted)",
+                textDecoration: "none",
+                fontWeight: 500,
+                transition: "color 0.2s",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--navy-dark)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
             >
-              {link.label}
+              {l.label}
             </a>
           ))}
-        </div>
-
-        <div className="flex items-center gap-3">
           <a
             href="/cv-alessandro-pereira.pdf"
             download
-            className="hidden md:inline-flex items-center px-4 py-1.5 text-xs font-semibold border border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-200 rounded"
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 600,
+              color: "var(--navy-dark)",
+              border: "1.5px solid var(--navy-dark)",
+              borderRadius: 4,
+              padding: "5px 14px",
+              textDecoration: "none",
+              letterSpacing: "0.03em",
+              transition: "background 0.2s, color 0.2s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "var(--navy-dark)";
+              e.currentTarget.style.color = "#fff";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.color = "var(--navy-dark)";
+            }}
           >
             Download CV
           </a>
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-slate-700"
-            aria-label="Menu"
-          >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
-        </div>
+        </nav>
+
+        {/* Mobile toggle */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden"
+          style={{ color: "var(--navy-dark)", background: "none", border: "none", cursor: "pointer" }}
+          aria-label="Menu"
+        >
+          {open ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </div>
 
-      {mobileOpen && (
-        <div className="md:hidden bg-white border-t border-slate-100">
-          <div className="px-6 py-5 flex flex-col gap-4">
-            {navLinks.map((link) => (
+      {/* Mobile menu */}
+      {open && (
+        <div
+          style={{
+            borderTop: "1px solid var(--border)",
+            background: "#fff",
+            padding: "1.25rem 2rem 1.5rem",
+          }}
+          className="md:hidden"
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            {links.map((l) => (
               <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-sm text-slate-700 hover:text-slate-900 font-medium"
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                style={{
+                  fontSize: "0.9375rem",
+                  color: "var(--text-body)",
+                  textDecoration: "none",
+                  fontWeight: 500,
+                }}
               >
-                {link.label}
+                {l.label}
               </a>
             ))}
-            <div className="border-t border-slate-100 pt-4">
+            <div style={{ borderTop: "1px solid var(--border)", paddingTop: "1rem" }}>
               <a
                 href="/cv-alessandro-pereira.pdf"
                 download
-                className="text-sm font-semibold text-slate-900"
+                style={{
+                  fontSize: "0.875rem",
+                  fontWeight: 600,
+                  color: "var(--navy-dark)",
+                  textDecoration: "none",
+                }}
               >
                 Download CV
               </a>
@@ -94,6 +159,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 }

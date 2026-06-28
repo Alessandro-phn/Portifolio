@@ -1,51 +1,103 @@
 "use client";
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 
 const kpis = [
-  { value: "30%", label: "Redução em peças automotivas", desc: "via renegociação e análise de curva ABC" },
-  { value: "26%", label: "Redução em serviços mecânicos", desc: "através de homologação de novos fornecedores" },
-  { value: "2,36%", label: "Redução média no custo de diesel", desc: "por contrato de fornecimento negociado" },
-  { value: "100%", label: "Nível de serviço mantido", desc: "OTD consistente durante os projetos de saving" },
+  {
+    valor: "30%",
+    label: "Redução em peças automotivas",
+    detalhe: "via renegociação e análise de curva ABC",
+  },
+  {
+    valor: "26%",
+    label: "Redução em serviços mecânicos e elétricos",
+    detalhe: "através de homologação de novos fornecedores",
+  },
+  {
+    valor: "2,36%",
+    label: "Redução média no custo de diesel",
+    detalhe: "por contrato de fornecimento negociado",
+  },
+  {
+    valor: "100%",
+    label: "Nível de serviço com maior cliente",
+    detalhe: "mantido durante projetos de saving simultâneos",
+  },
 ];
 
 export default function ResultadosSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="resultados" className="py-20" style={{ background: "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
-      <div ref={ref} className="max-w-5xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5 }}
-          className="mb-12"
-        >
-          <p className="section-label mb-5">Resultados</p>
-          <h2 className="display-heading text-3xl lg:text-4xl" style={{ color: "#0F172A" }}>
-            Números documentados
-          </h2>
-        </motion.div>
+    <section
+      id="resultados"
+      ref={ref}
+      style={{
+        background: "#FFFFFF",
+        borderBottom: "1px solid var(--border)",
+        padding: "6rem 2rem",
+        opacity: inView ? 1 : 0,
+        transition: "opacity 0.6s ease",
+      }}
+    >
+      <div style={{ maxWidth: 1024, margin: "0 auto" }}>
+        <p className="label" style={{ marginBottom: "1.5rem" }}>Resultados</p>
+        <h2 className="section-heading" style={{ marginBottom: "3rem" }}>
+          Números documentados em compras
+        </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: "1.5px",
+            background: "var(--border)",
+            border: "1px solid var(--border)",
+          }}
+        >
           {kpis.map((kpi, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="bg-white border border-slate-200 rounded-lg p-6"
+              style={{
+                background: "#FFFFFF",
+                padding: "2rem 1.75rem",
+              }}
             >
               <div
-                className="text-3xl font-bold mb-3"
-                style={{ fontFamily: "var(--font-playfair)", color: "#1E3A5F" }}
+                style={{
+                  fontFamily: "var(--font-playfair)",
+                  fontSize: "2.75rem",
+                  fontWeight: 400,
+                  color: "var(--navy-dark)",
+                  lineHeight: 1,
+                  marginBottom: "0.75rem",
+                  letterSpacing: "-0.02em",
+                }}
               >
-                {kpi.value}
+                {kpi.valor}
               </div>
-              <div className="text-sm font-semibold text-slate-800 mb-1">{kpi.label}</div>
-              <div className="text-xs text-slate-400 leading-relaxed">{kpi.desc}</div>
-            </motion.div>
+              <div
+                style={{
+                  fontWeight: 600,
+                  fontSize: "0.8125rem",
+                  color: "var(--navy-dark)",
+                  marginBottom: "0.4rem",
+                  lineHeight: 1.4,
+                }}
+              >
+                {kpi.label}
+              </div>
+              <div
+                style={{
+                  fontSize: "0.75rem",
+                  color: "var(--text-subtle)",
+                  lineHeight: 1.5,
+                }}
+              >
+                {kpi.detalhe}
+              </div>
+            </div>
           ))}
         </div>
       </div>

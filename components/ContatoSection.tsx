@@ -1,112 +1,217 @@
 "use client";
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { useInView } from "framer-motion";
 import { Mail, Github, Linkedin } from "lucide-react";
 
 export default function ContatoSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const [form, setForm] = useState({ nome: "", email: "", assunto: "", mensagem: "" });
+  const [enviado, setEnviado] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setEnviado(true);
+    setForm({ nome: "", email: "", assunto: "", mensagem: "" });
+    setTimeout(() => setEnviado(false), 5000);
+  };
+
+  const inputStyle: React.CSSProperties = {
+    width: "100%",
+    padding: "10px 12px",
+    fontSize: "0.875rem",
+    border: "1px solid var(--border)",
+    borderRadius: 4,
+    color: "var(--navy-dark)",
+    background: "#fff",
+    outline: "none",
+    transition: "border-color 0.2s",
+    fontFamily: "var(--font-inter)",
+  };
+
+  const labelStyle: React.CSSProperties = {
+    display: "block",
+    fontSize: "0.75rem",
+    fontWeight: 600,
+    color: "var(--text-muted)",
+    letterSpacing: "0.06em",
+    textTransform: "uppercase",
+    marginBottom: "0.4rem",
+  };
 
   return (
-    <section id="contato" className="py-20" style={{ background: "#F8FAFC" }}>
-      <div ref={ref} className="max-w-5xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5 }}
+    <section
+      id="contato"
+      ref={ref}
+      style={{
+        background: "#FFFFFF",
+        padding: "6rem 2rem",
+        opacity: inView ? 1 : 0,
+        transition: "opacity 0.6s ease",
+      }}
+    >
+      <div style={{ maxWidth: 1024, margin: "0 auto" }}>
+        <p className="label" style={{ marginBottom: "1.5rem" }}>Contato</p>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "4rem",
+            alignItems: "start",
+          }}
         >
-          <p className="section-label mb-5">Contato</p>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="display-heading text-3xl lg:text-4xl mb-4" style={{ color: "#0F172A" }}>
-                Vamos conversar
-              </h2>
-              <p className="text-slate-600 leading-relaxed mb-8">
-                Aberto a oportunidades, parcerias e projetos. Localizado em Salto, SP —
-                disponível para trabalho presencial, híbrido ou remoto.
-              </p>
+          {/* Info */}
+          <div>
+            <h2 className="section-heading" style={{ marginBottom: "1rem" }}>
+              Vamos conversar
+            </h2>
+            <p
+              style={{
+                fontSize: "0.9375rem",
+                color: "var(--text-muted)",
+                lineHeight: 1.7,
+                marginBottom: "2rem",
+              }}
+            >
+              Aberto a oportunidades, parcerias e projetos. Localizado em Salto, SP —
+              disponível para trabalho presencial, híbrido ou remoto.
+            </p>
 
-              <div className="space-y-4">
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              {[
+                { icon: Mail, label: "pereira-cn@hotmail.com", href: "mailto:pereira-cn@hotmail.com" },
+                { icon: Linkedin, label: "linkedin.com/in/a-g-pereira", href: "https://linkedin.com/in/a-g-pereira" },
+                { icon: Github, label: "github.com/Alessandro-phn", href: "https://github.com/Alessandro-phn" },
+              ].map(({ icon: Icon, label, href }) => (
                 <a
-                  href="mailto:pereira-cn@hotmail.com"
-                  className="flex items-center gap-3 text-slate-700 hover:text-slate-900 transition-colors"
-                >
-                  <Mail size={16} className="text-slate-400" />
-                  <span className="text-sm">pereira-cn@hotmail.com</span>
-                </a>
-                <a
-                  href="https://github.com/Alessandro-phn"
-                  target="_blank"
+                  key={href}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-slate-700 hover:text-slate-900 transition-colors"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.625rem",
+                    fontSize: "0.875rem",
+                    color: "var(--text-muted)",
+                    textDecoration: "none",
+                    transition: "color 0.2s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--navy-dark)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
                 >
-                  <Github size={16} className="text-slate-400" />
-                  <span className="text-sm">github.com/Alessandro-phn</span>
+                  <Icon size={14} style={{ flexShrink: 0 }} />
+                  {label}
                 </a>
-                <a
-                  href="https://linkedin.com/in/a-g-pereira"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-slate-700 hover:text-slate-900 transition-colors"
-                >
-                  <Linkedin size={16} className="text-slate-400" />
-                  <span className="text-sm">linkedin.com/in/a-g-pereira</span>
-                </a>
-              </div>
+              ))}
             </div>
+          </div>
 
-            <div className="bg-white border border-slate-200 rounded-lg p-8">
-              <form
-                onSubmit={(e) => e.preventDefault()}
-                className="space-y-5"
+          {/* Form */}
+          <div
+            style={{
+              border: "1px solid var(--border)",
+              borderRadius: 6,
+              padding: "2rem",
+              background: "var(--bg-alt)",
+            }}
+          >
+            {enviado ? (
+              <div
+                style={{
+                  minHeight: 200,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "0.5rem",
+                  textAlign: "center",
+                }}
               >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <p style={{ fontWeight: 600, color: "var(--navy-dark)" }}>Mensagem enviada.</p>
+                <p style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>
+                  Responderei em até 24 horas.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.125rem" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
                   <div>
-                    <label className="block text-xs font-medium text-slate-500 mb-1.5">Nome</label>
+                    <label style={labelStyle}>Nome</label>
                     <input
                       type="text"
                       required
                       placeholder="Seu nome"
-                      className="w-full px-3 py-2.5 text-sm border border-slate-200 rounded text-slate-900 placeholder-slate-300 outline-none focus:border-slate-400 transition-colors bg-white"
+                      value={form.nome}
+                      onChange={(e) => setForm({ ...form, nome: e.target.value })}
+                      style={inputStyle}
+                      onFocus={(e) => (e.target.style.borderColor = "var(--navy-mid)")}
+                      onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-slate-500 mb-1.5">E-mail</label>
+                    <label style={labelStyle}>E-mail</label>
                     <input
                       type="email"
                       required
                       placeholder="seu@email.com"
-                      className="w-full px-3 py-2.5 text-sm border border-slate-200 rounded text-slate-900 placeholder-slate-300 outline-none focus:border-slate-400 transition-colors bg-white"
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      style={inputStyle}
+                      onFocus={(e) => (e.target.style.borderColor = "var(--navy-mid)")}
+                      onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-500 mb-1.5">Assunto</label>
+                  <label style={labelStyle}>Assunto</label>
                   <input
                     type="text"
-                    placeholder="Ex: Oportunidade / Parceria / Projeto"
-                    className="w-full px-3 py-2.5 text-sm border border-slate-200 rounded text-slate-900 placeholder-slate-300 outline-none focus:border-slate-400 transition-colors bg-white"
+                    placeholder="Oportunidade / Parceria / Projeto"
+                    value={form.assunto}
+                    onChange={(e) => setForm({ ...form, assunto: e.target.value })}
+                    style={inputStyle}
+                    onFocus={(e) => (e.target.style.borderColor = "var(--navy-mid)")}
+                    onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-500 mb-1.5">Mensagem</label>
+                  <label style={labelStyle}>Mensagem</label>
                   <textarea
                     required
                     rows={4}
-                    placeholder="Conte sobre a oportunidade ou projeto..."
-                    className="w-full px-3 py-2.5 text-sm border border-slate-200 rounded text-slate-900 placeholder-slate-300 outline-none focus:border-slate-400 transition-colors resize-none bg-white"
+                    placeholder="Descreva a oportunidade ou projeto..."
+                    value={form.mensagem}
+                    onChange={(e) => setForm({ ...form, mensagem: e.target.value })}
+                    style={{ ...inputStyle, resize: "none" }}
+                    onFocus={(e) => (e.target.style.borderColor = "var(--navy-mid)")}
+                    onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-2.5 bg-slate-900 text-white text-sm font-semibold rounded hover:bg-slate-700 transition-colors"
+                  style={{
+                    padding: "10px 20px",
+                    background: "var(--navy-dark)",
+                    color: "#fff",
+                    fontSize: "0.8125rem",
+                    fontWeight: 600,
+                    border: "none",
+                    borderRadius: 4,
+                    cursor: "pointer",
+                    transition: "background 0.2s",
+                    fontFamily: "var(--font-inter)",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "var(--navy-mid)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "var(--navy-dark)")}
                 >
                   Enviar mensagem
                 </button>
               </form>
-            </div>
+            )}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

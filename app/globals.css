@@ -2,35 +2,80 @@
 @config "../tailwind.config.ts";
 
 :root {
-  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
   --font-playfair: 'Playfair Display', Georgia, serif;
+
+  --navy-dark:   #0C1832;
+  --navy-mid:    #1E3A5F;
+  --navy-light:  #2D5A8E;
+  --gold:        #B09148;
+  --text-body:   #334155;
+  --text-muted:  #64748B;
+  --text-subtle: #94A3B8;
+  --border:      #E2E8F0;
+  --border-dark: #CBD5E1;
+  --bg:          #FFFFFF;
+  --bg-alt:      #F9FAFB;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: #ffffff;
-  color: #0F172A;
+  background: var(--bg);
+  color: var(--text-body);
   font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
+  line-height: 1.7;
 }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #f1f5f9; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
-::selection { background: rgba(30, 58, 95, 0.1); }
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-alt);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-dark);
+  border-radius: 2px;
+}
 
-.section-label {
-  font-size: 0.7rem;
+::selection {
+  background: rgba(30, 58, 95, 0.1);
+}
+
+/* Typography utilities */
+.label {
+  font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #1E3A5F;
+  color: var(--text-subtle);
 }
 
-.display-heading {
-  font-family: var(--font-playfair);
-  font-weight: 700;
-  line-height: 1.1;
-  color: #0F172A;
+.section-heading {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  color: var(--navy-dark);
+  line-height: 1.25;
+}
+
+.body-text {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text-body);
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: 0.875rem;
 }

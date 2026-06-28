@@ -1,74 +1,128 @@
 "use client";
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 
 const grupos = [
   {
-    categoria: "Compras e Supply Chain",
+    titulo: "Compras e Supply Chain",
     itens: [
-      "Strategic Sourcing", "Negociação", "Gestão de Fornecedores",
-      "Curva ABC", "Spend Analysis", "Gestão de Contratos",
-      "Supply Chain Management", "MRO", "OTD / Lead Time",
+      "Strategic Sourcing",
+      "Negociação",
+      "Gestão de Fornecedores",
+      "Curva ABC",
+      "Spend Analysis",
+      "Gestão de Contratos",
+      "Supply Chain Management",
+      "MRO",
+      "Controle de OTD",
     ],
   },
   {
-    categoria: "Dados e Tecnologia",
+    titulo: "Dados e Tecnologia",
     itens: [
-      "Power BI", "Excel Avançado", "SAP MM/SRM",
-      "SQL", "Python (básico)", "React / Next.js",
-      "TypeScript", "Git / GitHub", "IA Aplicada a Negócios",
+      "Power BI",
+      "Excel Avançado",
+      "SAP MM/SRM",
+      "SQL",
+      "Python",
+      "React / Next.js",
+      "TypeScript",
+      "Git / GitHub",
+      "IA Aplicada a Negócios",
     ],
   },
   {
-    categoria: "Gestão e Processos",
+    titulo: "Gestão e Processos",
     itens: [
-      "Liderança de Equipe", "KPIs e Indicadores", "Controles Internos",
-      "Melhoria de Processos", "Relatórios Gerenciais", "ERP",
+      "Liderança de Equipe",
+      "KPIs e Indicadores",
+      "Controles Internos",
+      "Melhoria de Processos",
+      "Relatórios Gerenciais",
+      "Integração com ERP",
     ],
   },
 ];
 
 export default function CompetenciasSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="competencias" className="py-20" style={{ background: "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
-      <div ref={ref} className="max-w-5xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5 }}
-          className="mb-12"
-        >
-          <p className="section-label mb-5">Competências</p>
-          <h2 className="display-heading text-3xl lg:text-4xl" style={{ color: "#0F172A" }}>
-            Áreas de atuação
-          </h2>
-        </motion.div>
+    <section
+      id="competencias"
+      ref={ref}
+      style={{
+        background: "#FFFFFF",
+        borderBottom: "1px solid var(--border)",
+        padding: "6rem 2rem",
+        opacity: inView ? 1 : 0,
+        transition: "opacity 0.6s ease",
+      }}
+    >
+      <div style={{ maxWidth: 1024, margin: "0 auto" }}>
+        <p className="label" style={{ marginBottom: "1.5rem" }}>Competências</p>
+        <h2 className="section-heading" style={{ marginBottom: "3rem" }}>
+          Áreas de atuação
+        </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: "2.5rem",
+          }}
+        >
           {grupos.map((grupo, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-            >
-              <p className="text-xs font-semibold text-slate-900 uppercase tracking-widest mb-4 pb-3 border-b border-slate-200">
-                {grupo.categoria}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {grupo.itens.map((item) => (
-                  <span
-                    key={item}
-                    className="text-xs px-2.5 py-1 rounded border border-slate-200 text-slate-600 bg-white"
-                  >
-                    {item}
-                  </span>
-                ))}
+            <div key={i}>
+              <div
+                style={{
+                  fontSize: "0.75rem",
+                  fontWeight: 700,
+                  color: "var(--navy-dark)",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  paddingBottom: "0.875rem",
+                  marginBottom: "1rem",
+                  borderBottom: "2px solid var(--navy-dark)",
+                }}
+              >
+                {grupo.titulo}
               </div>
-            </motion.div>
+              <ul
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.5rem",
+                  listStyle: "none",
+                }}
+              >
+                {grupo.itens.map((item) => (
+                  <li
+                    key={item}
+                    style={{
+                      fontSize: "0.875rem",
+                      color: "var(--text-body)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                    }}
+                  >
+                    <span
+                      style={{
+                        width: 4,
+                        height: 4,
+                        borderRadius: "50%",
+                        background: "var(--border-dark)",
+                        flexShrink: 0,
+                        display: "inline-block",
+                      }}
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </div>
