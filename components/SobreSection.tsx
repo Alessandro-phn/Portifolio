@@ -1,154 +1,116 @@
 "use client";
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import {
-  Factory, Briefcase, Users, ShoppingCart, Code2, Brain
-} from "lucide-react";
+import { motion, useInView } from "framer-motion";
 
 const timeline = [
-  {
-    year: "1995",
-    title: "Indústria",
-    desc: "Início de carreira no chão de fábrica — aprendendo processos, qualidade e a linguagem dos negócios na prática.",
-    icon: Factory,
-    color: "#3B67AB",
-  },
-  {
-    year: "2000",
-    title: "Área Administrativa",
-    desc: "Transição para funções administrativas, desenvolvendo visão sistêmica de processos e controles internos.",
-    icon: Briefcase,
-    color: "#5A7FB8",
-  },
-  {
-    year: "2005",
-    title: "Liderança",
-    desc: "Assumindo a liderança do faturamento — gestão de equipes, indicadores e relacionamento com clientes e fornecedores.",
-    icon: Users,
-    color: "#C9A84C",
-  },
-  {
-    year: "2012",
-    title: "Compras Estratégicas",
-    desc: "Evolução para Comprador Estratégico, com foco em negociação, curva ABC, gestão de fornecedores e redução de custos.",
-    icon: ShoppingCart,
-    color: "#E8C96A",
-  },
-  {
-    year: "2020",
-    title: "Tecnologia & Dados",
-    desc: "Mergulho em Power BI, SAP, SQL e análise de dados — transformando informações em decisões de negócio.",
-    icon: Code2,
-    color: "#7897C4",
-  },
-  {
-    year: "Hoje",
-    title: "Inteligência Artificial",
-    desc: "Unindo décadas de experiência a IA e Machine Learning para automatizar, analisar e gerar valor real às organizações.",
-    icon: Brain,
-    color: "#C9A84C",
-  },
+  { period: "1995 – 1997", role: "Tecelão de Meias", context: "Início de carreira na indústria têxtil" },
+  { period: "1997 – 1998", role: "Auxiliar de Escritório", context: "Primeiro contato com processos administrativos" },
+  { period: "1999 – 2002", role: "Tecelão de Meias", context: "Retorno à indústria; aprofundamento em processos de produção" },
+  { period: "2002 – 2004", role: "Operações Industriais", context: "Diversificação de experiências no ambiente fabril" },
+  { period: "2004 – 2009", role: "Área Administrativa", context: "Migração definitiva para escritório, controles e processos internos" },
+  { period: "2011 – 2022", role: "Chefe de Faturamento", context: "Liderança de equipe, indicadores, integração financeira e operacional" },
+  { period: "2022 – 2026", role: "Comprador Estratégico", context: "Strategic sourcing, negociação, redução de custos e gestão de fornecedores" },
+  { period: "2024 – hoje", role: "Tecnologia & Dados", context: "Power BI, SQL, React, Next.js e IA aplicada a processos e decisões de negócio" },
 ];
 
 export default function SobreSection() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="sobre" className="section-padding bg-navy-950 relative overflow-hidden">
-      {/* Side label */}
-      <div
-        className="absolute left-0 top-1/2 -translate-y-1/2 -rotate-90 text-navy-800 font-display font-bold select-none pointer-events-none"
-        style={{ fontSize: "7rem", letterSpacing: "-0.05em", transformOrigin: "left center", left: "-2rem" }}
-      >
-        Sobre
-      </div>
-
-      <div ref={ref} className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-20"
-        >
-          <div className="flex items-center gap-4 mb-6">
-            <div className="h-px w-10 bg-gold-500" />
-            <span className="section-label">Trajetória</span>
-          </div>
-          <h2 className="display-heading text-white text-4xl lg:text-5xl mb-8 max-w-2xl">
-            Vinte e cinco anos construindo{" "}
-            <em className="gradient-text not-italic">expertise real</em>
-          </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl">
-            <p className="text-navy-100/60 text-lg leading-relaxed">
-              Comecei na indústria em 1995, aprendendo negócios de dentro para fora — no chão de fábrica, nos processos, na cadeia logística. Com o tempo, migrei para funções administrativas e depois para a liderança.
-            </p>
-            <p className="text-navy-100/60 text-lg leading-relaxed">
-              Foram quinze anos de dedicação a uma mesma empresa, evoluindo de líder de faturamento a Comprador Estratégico. Hoje, uno essa experiência a tecnologia e Inteligência Artificial para transformar processos e apoiar decisões.
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Timeline */}
-        <div className="relative">
-          <div className="timeline-line" />
-
-          <div className="space-y-16">
-            {timeline.map((item, i) => {
-              const Icon = item.icon;
-              const isLeft = i % 2 === 0;
-              return (
-                <motion.div
-                  key={item.year}
-                  initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: i * 0.12 }}
-                  className={`relative grid grid-cols-1 md:grid-cols-2 gap-8 ${isLeft ? "" : "md:text-right"}`}
-                >
-                  {/* Left side */}
-                  <div className={isLeft ? "md:pr-12" : "md:order-2 md:pl-12"}>
-                    <div
-                      className={`glass-card rounded-xl p-6 hover-card border border-navy-700/50 ${isLeft ? "" : "md:ml-auto"}`}
-                    >
-                      <div className={`flex items-center gap-3 mb-3 ${isLeft ? "" : "md:flex-row-reverse"}`}>
-                        <div
-                          className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-                          style={{ background: `${item.color}18`, border: `1px solid ${item.color}30` }}
-                        >
-                          <Icon size={18} style={{ color: item.color }} />
-                        </div>
-                        <div>
-                          <div className="text-xs tracking-widest uppercase font-medium" style={{ color: item.color }}>
-                            {item.year}
-                          </div>
-                          <h3 className="text-white font-semibold text-lg">{item.title}</h3>
-                        </div>
-                      </div>
-                      <p className="text-navy-100/55 text-sm leading-relaxed">{item.desc}</p>
-                    </div>
-                  </div>
-
-                  {/* Center dot */}
-                  <div
-                    className="absolute left-1/2 top-6 -translate-x-1/2 hidden md:flex items-center justify-center w-10 h-10 rounded-full z-10"
-                    style={{
-                      background: "#0A1628",
-                      border: `2px solid ${item.color}`,
-                      boxShadow: `0 0 16px ${item.color}40`,
-                    }}
-                  >
-                    <div className="w-2.5 h-2.5 rounded-full" style={{ background: item.color }} />
-                  </div>
-
-                  {/* Right side spacer */}
-                  <div className={isLeft ? "" : "md:order-1"} />
-                </motion.div>
-              );
-            })}
-          </div>
+    <>
+      {/* Sobre */}
+      <section id="sobre" className="py-20 bg-white" style={{ borderBottom: "1px solid #E2E8F0" }}>
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.div
+            ref={ref}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="section-label mb-5">Sobre</p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              <div>
+                <h2 className="display-heading text-3xl lg:text-4xl mb-6" style={{ color: "#0F172A" }}>
+                  Unindo operações, compras e tecnologia
+                </h2>
+              </div>
+              <div className="space-y-4">
+                <p className="text-slate-600 leading-relaxed">
+                  Comecei minha trajetória no chão de fábrica em 1995 e, ao longo de três décadas,
+                  migrei pelo administrativo, assumi a liderança de faturamento por onze anos e
+                  evoluí para compras estratégicas, onde atuo há mais de dois anos com foco em
+                  negociação, redução de custos e gestão de fornecedores.
+                </p>
+                <p className="text-slate-600 leading-relaxed">
+                  Desde 2024, venho aprofundando minha atuação em tecnologia e dados — Power BI,
+                  SQL, React e IA aplicada —, com o objetivo de entregar soluções que conectem
+                  experiência de negócio e inteligência analítica.
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Jornada */}
+      <section id="jornada" className="py-20" style={{ background: "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <p className="section-label mb-5">Jornada Profissional</p>
+            <h2 className="display-heading text-3xl lg:text-4xl mb-12" style={{ color: "#0F172A" }}>
+              30 anos de evolução contínua
+            </h2>
+
+            <div className="relative">
+              {/* Vertical line */}
+              <div
+                className="absolute left-24 top-0 bottom-0 w-px hidden sm:block"
+                style={{ background: "#E2E8F0" }}
+              />
+
+              <div className="space-y-8">
+                {timeline.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0 }}
+                    animate={inView ? { opacity: 1 } : {}}
+                    transition={{ duration: 0.4, delay: 0.1 + i * 0.06 }}
+                    className="flex gap-8 items-start"
+                  >
+                    {/* Period */}
+                    <div className="hidden sm:block w-20 flex-shrink-0 text-right">
+                      <span className="text-xs font-semibold text-slate-400">{item.period}</span>
+                    </div>
+
+                    {/* Dot */}
+                    <div className="hidden sm:flex flex-shrink-0 w-5 items-start justify-center pt-0.5">
+                      <div
+                        className="w-3 h-3 rounded-full border-2 flex-shrink-0"
+                        style={{
+                          borderColor: i >= 5 ? "#1E3A5F" : "#CBD5E1",
+                          background: i >= 5 ? "#1E3A5F" : "white",
+                        }}
+                      />
+                    </div>
+
+                    {/* Content */}
+                    <div className="pb-2">
+                      <div className="sm:hidden text-xs font-semibold text-slate-400 mb-1">{item.period}</div>
+                      <div className="font-semibold text-slate-900 text-sm">{item.role}</div>
+                      <div className="text-slate-500 text-sm mt-0.5">{item.context}</div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </>
   );
 }

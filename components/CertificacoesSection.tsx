@@ -1,80 +1,94 @@
 "use client";
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { GraduationCap, Award } from "lucide-react";
+import { motion, useInView } from "framer-motion";
 
-const certs = [
-  { title: "Engenharia da Computação", institution: "Graduação", type: "Formação", year: "Cursando", highlight: true },
-  { title: "MBA Gestão Estratégica de Compras", institution: "Pós-Graduação", type: "MBA", year: "Concluído", highlight: true },
-  { title: "MBA Cybersecurity", institution: "Pós-Graduação", type: "MBA", year: "Concluído", highlight: true },
-  { title: "Pós-Graduação em IA & Machine Learning", institution: "Especialização", type: "Pós", year: "Concluído", highlight: true },
-  { title: "SAP MM/SRM", institution: "SAP SE", type: "Certificação", year: "Certificado", highlight: false },
-  { title: "Power BI Data Analyst", institution: "Microsoft", type: "Certificação", year: "Certificado", highlight: false },
-  { title: "Excel Expert", institution: "Microsoft", type: "Certificação", year: "Certificado", highlight: false },
-  { title: "SQL for Data Analysis", institution: "Múltiplas plataformas", type: "Certificação", year: "Certificado", highlight: false },
+const formacao = [
+  { titulo: "Engenharia da Computação", tipo: "Graduação", status: "Cursando" },
+  { titulo: "Pós-Graduação em Inteligência Artificial e Machine Learning", tipo: "Especialização", status: "Concluído" },
+  { titulo: "MBA em Gestão Estratégica de Compras", tipo: "MBA", status: "Concluído" },
+  { titulo: "MBA em Cybersecurity e Cybercrimes", tipo: "MBA", status: "Concluído" },
+];
+
+const cursos = [
+  "Power BI Data Analyst — Microsoft",
+  "SAP MM/SRM — SAP SE",
+  "Excel Expert — Microsoft",
+  "SQL for Data Analysis",
+  "React / Next.js — Múltiplas plataformas",
+  "Python para Dados — Múltiplas plataformas",
 ];
 
 export default function CertificacoesSection() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="certificacoes" className="section-padding" style={{ background: "#080F1E" }}>
-      <div ref={ref} className="max-w-7xl mx-auto px-6">
+    <section id="formacao" className="py-20 bg-white" style={{ borderBottom: "1px solid #E2E8F0" }}>
+      <div ref={ref} className="max-w-5xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5 }}
+          className="mb-12"
         >
-          <div className="flex items-center gap-4 mb-6">
-            <div className="h-px w-10 bg-gold-500" />
-            <span className="section-label">Formação & Certificações</span>
-          </div>
-          <h2 className="display-heading text-white text-4xl lg:text-5xl">
-            Aprendizado{" "}
-            <em className="gradient-text not-italic">contínuo</em>
+          <p className="section-label mb-5">Formação</p>
+          <h2 className="display-heading text-3xl lg:text-4xl" style={{ color: "#0F172A" }}>
+            Educação e certificações
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {certs.map((cert, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
-              className={`glass-card rounded-xl p-6 hover-card border flex flex-col gap-4 ${
-                cert.highlight
-                  ? "border-gold-500/20"
-                  : "border-navy-700/50"
-              }`}
-            >
-              <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                cert.highlight
-                  ? "bg-gold-500/15 text-gold-400"
-                  : "bg-navy-700/50 text-navy-400"
-              }`}>
-                {cert.highlight ? <GraduationCap size={18} /> : <Award size={18} />}
-              </div>
-              <div>
-                <div className={`text-xs font-semibold tracking-widest uppercase mb-2 ${
-                  cert.highlight ? "text-gold-500/70" : "text-navy-100/40"
-                }`}>
-                  {cert.type}
-                </div>
-                <h3 className="text-white font-semibold text-sm leading-snug mb-1">{cert.title}</h3>
-                <p className="text-navy-100/40 text-xs">{cert.institution}</p>
-              </div>
-              <div className={`mt-auto text-xs px-2.5 py-1 rounded-sm w-fit ${
-                cert.highlight
-                  ? "bg-gold-500/10 text-gold-400/70 border border-gold-500/20"
-                  : "bg-navy-700/30 text-navy-100/40 border border-navy-600/30"
-              }`}>
-                {cert.year}
-              </div>
-            </motion.div>
-          ))}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div>
+            <p className="text-xs font-semibold text-slate-900 uppercase tracking-widest mb-5 pb-3 border-b border-slate-200">
+              Formação Acadêmica
+            </p>
+            <div className="space-y-5">
+              {formacao.map((f, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  animate={inView ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.4, delay: i * 0.07 }}
+                  className="flex items-start justify-between gap-4"
+                >
+                  <div>
+                    <p className="text-sm font-semibold text-slate-800">{f.titulo}</p>
+                    <p className="text-xs text-slate-400 mt-0.5">{f.tipo}</p>
+                  </div>
+                  <span
+                    className="flex-shrink-0 text-xs px-2 py-0.5 rounded border"
+                    style={{
+                      color: f.status === "Cursando" ? "#1d4ed8" : "#15803d",
+                      borderColor: f.status === "Cursando" ? "#bfdbfe" : "#bbf7d0",
+                      background: f.status === "Cursando" ? "#eff6ff" : "#f0fdf4",
+                    }}
+                  >
+                    {f.status}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="text-xs font-semibold text-slate-900 uppercase tracking-widest mb-5 pb-3 border-b border-slate-200">
+              Cursos e Certificações
+            </p>
+            <ul className="space-y-3">
+              {cursos.map((curso, i) => (
+                <motion.li
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  animate={inView ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.4, delay: i * 0.06 }}
+                  className="flex items-start gap-2.5 text-sm text-slate-600"
+                >
+                  <span className="text-slate-300 mt-1.5 flex-shrink-0">—</span>
+                  {curso}
+                </motion.li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
