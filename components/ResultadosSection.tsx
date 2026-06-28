@@ -107,7 +107,7 @@ export default function ResultadosSection() {
         >
           <div className="gold-divider max-w-xs mx-auto mb-8" />
           <blockquote className="text-navy-100/40 text-sm italic max-w-lg mx-auto">
-            "Saving não é sorte — é método, dados e negociação inteligente aplicados de forma consistente."
+            &ldquo;Saving não é sorte — é método, dados e negociação inteligente aplicados de forma consistente.&rdquo;
           </blockquote>
           <div className="text-gold-500/50 text-xs mt-3 tracking-widest uppercase">Alessandro G. Pereira</div>
         </motion.div>
