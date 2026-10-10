@@ -4,34 +4,28 @@ import { useInView } from "framer-motion";
 
 const etapas = [
   {
-    periodo: "1995 – 2004",
-    fase: "Indústria",
+    periodo: "09/2026 – atual",
+    fase: "Analista de Compras | Gigtech",
     descricao:
-      "Início de carreira no setor têxtil como Tecelão de Meias. Experiência direta com processos produtivos, qualidade e logística interna — base que moldou minha visão sobre operações e cadeia de suprimentos.",
+      "Atuação em processos de compras, cotações, negociação com fornecedores e acompanhamento de pedidos, apoiando as demandas de Suprimentos e Operações.",
   },
   {
-    periodo: "2004 – 2009",
-    fase: "Área Administrativa",
+    periodo: "05/2022 – 05/2026",
+    fase: "Comprador | Diplomata Logística e Transportes",
     descricao:
-      "Migração para funções de escritório com foco em controles internos, relatórios gerenciais e suporte às áreas financeira e operacional. Desenvolveu visão sistêmica dos processos da empresa.",
+      "Administração do departamento de compras, governança de dados em Excel, onboarding e prospecção de fornecedores, strategic sourcing, pesquisa de mercado e negociação de contratos de combustível, peças, equipamentos e serviços.",
   },
   {
-    periodo: "2011 – 2022",
-    fase: "Liderança em Faturamento",
+    periodo: "03/2022 – 05/2022",
+    fase: "Especialista em Faturamento | Diplomata Logística e Transportes",
     descricao:
-      "Onze anos como Chefe de Faturamento: liderança de equipe, gestão de KPIs, integração com clientes e áreas operacionais. Mantive 100% de nível de serviço com o maior cliente durante períodos críticos.",
+      "Gestão do processo completo de faturamento, conciliação de valores e provisões, relatórios mensais de indicadores e apoio a auditorias e controles de qualidade.",
   },
   {
-    periodo: "2022 – 2026",
-    fase: "Compras Estratégicas",
+    periodo: "05/2011 – 03/2022",
+    fase: "Chefe de Faturamento | Diplomata Logística e Transportes",
     descricao:
-      "Evolução para Comprador Estratégico com atuação em strategic sourcing, negociação de contratos, gestão de fornecedores e análise de dados. Resultados documentados de até 30% de redução de custos em categorias-chave.",
-  },
-  {
-    periodo: "2024 – hoje",
-    fase: "Dados e Tecnologia",
-    descricao:
-      "Aprofundamento em Power BI, SQL, React, Next.js e inteligência artificial aplicada a processos de compras e negócio. Desenvolvimento de soluções que conectam experiência operacional e capacidade analítica.",
+      "Liderança de equipe de cinco pessoas, revisão de relatórios diários e integração com Vendas, Operações e Finanças. Alinhamento da equipe e das áreas para manter 100% de nível de serviço com o maior cliente.",
   },
 ];
 
@@ -52,9 +46,9 @@ export default function JornadaSection() {
       }}
     >
       <div style={{ maxWidth: 1024, margin: "0 auto" }}>
-        <p className="label" style={{ marginBottom: "1.5rem" }}>Jornada</p>
+        <p className="label" style={{ marginBottom: "1.5rem" }}>Experiência</p>
         <h2 className="section-heading" style={{ marginBottom: "3.5rem" }}>
-          Três décadas de evolução contínua
+          Experiência profissional
         </h2>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
@@ -90,7 +84,7 @@ export default function JornadaSection() {
                     width: 6,
                     height: 6,
                     borderRadius: "50%",
-                    background: i >= 2 ? "var(--navy-mid)" : "var(--border-dark)",
+                    background: i === 0 ? "var(--navy-mid)" : "var(--border-dark)",
                     marginTop: 2,
                   }}
                 />

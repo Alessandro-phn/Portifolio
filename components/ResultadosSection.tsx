@@ -5,23 +5,23 @@ import { useInView } from "framer-motion";
 const kpis = [
   {
     valor: "30%",
-    label: "Redução em peças automotivas",
-    detalhe: "via renegociação e análise de curva ABC",
+    label: "Redução média em peças para caminhões",
+    detalhe: "Mantendo a qualidade dos materiais adquiridos.",
   },
   {
     valor: "26%",
-    label: "Redução em serviços mecânicos e elétricos",
-    detalhe: "através de homologação de novos fornecedores",
+    label: "Redução média em serviços mecânicos e elétricos",
+    detalhe: "Com ampliação do prazo de pagamento.",
   },
   {
     valor: "2,36%",
     label: "Redução média no custo de diesel",
-    detalhe: "por contrato de fornecimento negociado",
+    detalhe: "Resultado obtido em compras de combustível.",
   },
   {
     valor: "100%",
-    label: "Nível de serviço com maior cliente",
-    detalhe: "mantido durante projetos de saving simultâneos",
+    label: "Nível de serviço com o maior cliente",
+    detalhe: "Alcançado com alinhamento da equipe e das áreas.",
   },
 ];
 

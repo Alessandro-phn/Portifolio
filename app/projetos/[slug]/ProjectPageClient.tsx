@@ -91,7 +91,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
                 <div className="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center">
                   <Target size={16} className="text-red-400" />
                 </div>
-                <h2 className="text-white font-bold text-lg">O Problema</h2>
+                <h2 className="text-white font-bold text-lg">{project.slug === "milk-run-manager-pro" ? "Objetivo do projeto" : "O Problema"}</h2>
               </div>
               <p className="text-navy-100/60 leading-relaxed">{project.problem}</p>
             </motion.div>
@@ -123,7 +123,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
             {/* Lessons */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
               className="glass-card rounded-xl p-8 border border-navy-700/50">
-              <h2 className="text-white font-bold text-lg mb-5">Lições Aprendidas</h2>
+              <h2 className="text-white font-bold text-lg mb-5">{project.slug === "milk-run-manager-pro" ? "Recursos principais" : "Lições Aprendidas"}</h2>
               <ul className="space-y-3">
                 {project.lessons.map((lesson, i) => (
                   <li key={i} className="flex items-start gap-3 text-navy-100/60 text-sm leading-relaxed">

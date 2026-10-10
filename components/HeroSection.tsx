@@ -64,7 +64,7 @@ export default function HeroSection() {
             marginBottom: "1.75rem",
           }}
         >
-          Compras Estratégicas&ensp;·&ensp;Supply Chain&ensp;·&ensp;Dados e Tecnologia
+          Analista de Compras&ensp;·&ensp;Comprador PL&ensp;·&ensp;Compras Industriais
         </p>
 
         {/* Tagline */}
@@ -77,8 +77,8 @@ export default function HeroSection() {
             marginBottom: "2.5rem",
           }}
         >
-          Uno experiência operacional, compras estratégicas e tecnologia
-          para melhorar processos, reduzir custos e apoiar decisões.
+          Atuo em compras e strategic sourcing, com experiência em negociação, gestão de fornecedores e análise de custos.
+          Uno processos, dados e tecnologia para apoiar decisões e gerar resultados.
         </p>
 
         {/* CTAs */}

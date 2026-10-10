@@ -21,28 +21,28 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Alessandro Guimarães Pereira | Compras Estratégicas & Supply Chain",
+  title: "Alessandro Guimarães Pereira | Analista de Compras e Comprador PL",
   description:
-    "Profissional com mais de 25 anos de experiência em Compras Estratégicas, Supply Chain, Power BI, SAP e Inteligência Artificial aplicada a negócios.",
+    "Analista de Compras e Comprador PL com experiência em compras industriais, strategic sourcing, supply chain, Power BI e SAP.",
   keywords: [
     "compras estratégicas", "supply chain", "strategic sourcing", "Power BI",
     "SAP", "procurement", "análise de dados", "inteligência artificial",
-    "Alessandro Pereira", "gestor de compras"
+    "Alessandro Pereira", "analista de compras", "comprador pleno"
   ],
   authors: [{ name: "Alessandro Guimarães Pereira" }],
   creator: "Alessandro Guimarães Pereira",
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://alessandro-phn.vercel.app",
-    title: "Alessandro Guimarães Pereira | Compras Estratégicas & Supply Chain",
-    description: "Transformando experiência operacional, compras estratégicas e tecnologia em resultados para empresas.",
+    url: "https://portifolio-ten-nu-b9tokwo17n.vercel.app/",
+    title: "Alessandro Guimarães Pereira | Analista de Compras e Comprador PL",
+    description: "Experiência em compras industriais, negociação, strategic sourcing, supply chain, Power BI e SAP.",
     siteName: "Alessandro G. Pereira — Portfólio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alessandro Guimarães Pereira | Compras Estratégicas & Supply Chain",
-    description: "Transformando experiência operacional, compras estratégicas e tecnologia em resultados.",
+    title: "Alessandro Guimarães Pereira | Analista de Compras e Comprador PL",
+    description: "Analista de Compras e Comprador PL com experiência em compras industriais e supply chain.",
   },
   robots: {
     index: true,

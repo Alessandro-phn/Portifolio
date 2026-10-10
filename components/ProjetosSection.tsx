@@ -8,8 +8,8 @@ const projetos = [
     titulo: "Milk Run Manager Pro",
     categoria: "Supply Chain",
     objetivo:
-      "Sistema web para gestão de rotas de Milk Run com otimização de coletas, controle de fornecedores e monitoramento de KPIs de OTD em tempo real.",
-    tecnologias: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
+      "SaaS para gestão logística desenvolvido com Next.js, React, TypeScript, Supabase e PostgreSQL. Inclui autenticação, perfis de acesso, estrutura multiempresa com RLS, APIs REST, dashboards e auditoria; preparado para integração com Power BI e ERPs.",
+    tecnologias: ["Next.js", "React", "TypeScript", "Supabase", "PostgreSQL"],
     status: "Em desenvolvimento",
     github: "https://github.com/Alessandro-phn",
     demo: null,

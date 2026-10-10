@@ -5,33 +5,40 @@ import { useInView } from "framer-motion";
 const formacao = [
   {
     grau: "Graduação",
-    titulo: "Engenharia da Computação",
+    titulo: "Engenharia da Computação — UNIVESP (2024)",
     status: "Concluído",
   },
   {
     grau: "Pós-Graduação",
-    titulo: "Inteligência Artificial e Machine Learning",
+    titulo: "Inteligência Artificial e Machine Learning — Anhanguera (2025)",
     status: "Concluído",
   },
   {
     grau: "MBA",
-    titulo: "Gestão Estratégica de Compras",
+    titulo: "Gestão Estratégica em Compras — Anhanguera (2026)",
+    status: "Concluído",
+  },
+  {
+    grau: "MBA",
+    titulo: "Cybersecurity e Cybercrimes — Anhanguera (2026)",
+    status: "Concluído",
+  },
+  {
+    grau: "MBA",
+    titulo: "Lean Manufacturing — Anhanguera",
     status: "Cursando",
-  },
-  {
-    grau: "MBA",
-    titulo: "Cybersecurity e Cybercrimes",
-    status: "Concluído",
   },
 ];
 
 const complementar = [
-  "Power BI Data Analyst — Microsoft",
-  "SAP MM/SRM — SAP SE",
-  "Excel Expert — Microsoft",
-  "SQL for Data Analysis",
-  "React e Next.js — Múltiplas plataformas",
-  "Python para Dados",
+  "Power BI para Business Intelligence e Data Science — Data Science Academy (2025)",
+  "Gestão de Compras e Processos Operacionais — Estácio (2024)",
+  "Gestão de Compras e Negociação Estratégica — Udemy (2025)",
+  "SAP S/4HANA Cloud Private Edition, Sourcing & Procurement — SAP (cursando)",
+  "Administração de Banco de Dados — Fundação Bradesco (2022)",
+  "SAP para Iniciantes — Grandes Projetos (2026)",
+  "NR-10 — SESI/SC (2024)",
+  "Instalações Elétricas de Baixa Tensão — Anhanguera (2024)",
 ];
 
 export default function CertificacoesSection() {
