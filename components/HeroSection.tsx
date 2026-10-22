@@ -64,7 +64,7 @@ export default function HeroSection() {
             marginBottom: "1.75rem",
           }}
         >
-          Analista de Compras&ensp;·&ensp;Comprador PL&ensp;·&ensp;Compras Industriais
+          Comprador Sênior&ensp;·&ensp;Compras Industriais
         </p>
 
         {/* Tagline */}

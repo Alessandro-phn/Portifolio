@@ -21,13 +21,13 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Alessandro Guimarães Pereira | Analista de Compras e Comprador PL",
+  title: "Alessandro Guimarães Pereira | Comprador Sênior",
   description:
-    "Analista de Compras e Comprador PL com experiência em compras industriais, strategic sourcing, supply chain, Power BI e SAP.",
+    "Comprador Sênior com experiência em compras industriais, strategic sourcing, supply chain, Power BI e SAP.",
   keywords: [
     "compras estratégicas", "supply chain", "strategic sourcing", "Power BI",
     "SAP", "procurement", "análise de dados", "inteligência artificial",
-    "Alessandro Pereira", "analista de compras", "comprador pleno"
+    "Alessandro Pereira", "comprador sênior", "compras estratégicas"
   ],
   authors: [{ name: "Alessandro Guimarães Pereira" }],
   creator: "Alessandro Guimarães Pereira",
@@ -35,14 +35,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     url: "https://portifolio-ten-nu-b9tokwo17n.vercel.app/",
-    title: "Alessandro Guimarães Pereira | Analista de Compras e Comprador PL",
+    title: "Alessandro Guimarães Pereira | Comprador Sênior",
     description: "Experiência em compras industriais, negociação, strategic sourcing, supply chain, Power BI e SAP.",
     siteName: "Alessandro G. Pereira — Portfólio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alessandro Guimarães Pereira | Analista de Compras e Comprador PL",
-    description: "Analista de Compras e Comprador PL com experiência em compras industriais e supply chain.",
+    title: "Alessandro Guimarães Pereira | Comprador Sênior",
+    description: "Comprador Sênior com experiência em compras industriais e supply chain.",
   },
   robots: {
     index: true,
