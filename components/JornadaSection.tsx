@@ -4,14 +4,8 @@ import { useInView } from "framer-motion";
 
 const etapas = [
   {
-    periodo: "09/2026 – atual",
-    fase: "Analista de Compras | Gigtech",
-    descricao:
-      "Atuação em processos de compras, cotações, negociação com fornecedores e acompanhamento de pedidos, apoiando as demandas de Suprimentos e Operações.",
-  },
-  {
     periodo: "05/2022 – 05/2026",
-    fase: "Comprador | Diplomata Logística e Transportes",
+    fase: "Comprador Sênior | Diplomata Logística e Transportes",
     descricao:
       "Administração do departamento de compras, governança de dados em Excel, onboarding e prospecção de fornecedores, strategic sourcing, pesquisa de mercado e negociação de contratos de combustível, peças, equipamentos e serviços.",
   },

@@ -33,7 +33,7 @@ export default function SobreSection() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             <p className="body-text">
-              Atualmente sou Analista de Compras na Gigtech. Antes, atuei como Comprador na Diplomata Logística e Transportes, conduzindo strategic sourcing, negociações, gestão de fornecedores e contratos para combustível, peças, equipamentos e serviços.
+              Atuei como Comprador Sênior na Diplomata Logística e Transportes, conduzindo strategic sourcing, negociações, gestão de fornecedores e contratos para combustível, peças, equipamentos e serviços.
             </p>
             <p className="body-text">
               Minha trajetória também inclui mais de dez anos em faturamento e liderança de equipe. Em compras, alcancei reduções médias de custo de 30% em peças para caminhões, 26% em serviços mecânicos e elétricos e 2,36% em diesel. Complemento a experiência com formação em Engenharia da Computação, formação em Lean Manufacturing em andamento e conhecimentos de BI, SAP e desenvolvimento de sistemas.
