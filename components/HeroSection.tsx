@@ -64,7 +64,7 @@ export default function HeroSection() {
             marginBottom: "1.75rem",
           }}
         >
-          Comprador Sênior&ensp;·&ensp;Compras Industriais
+          Comprador Sênior
         </p>
 
         {/* Tagline */}
