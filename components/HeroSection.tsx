@@ -1,8 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import { ArrowRight, Download, Linkedin, Github } from "lucide-react";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function HeroSection() {
+  const { language } = useLanguage();
+  const en = language === "en";
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 80);
@@ -34,7 +37,7 @@ export default function HeroSection() {
       >
         {/* Label */}
         <p className="label" style={{ marginBottom: "2.5rem", color: "var(--text-subtle)" }}>
-          Portfólio Profissional
+          {en ? "Professional Portfolio" : "Portfólio Profissional"}
         </p>
 
         {/* Name */}
@@ -64,7 +67,7 @@ export default function HeroSection() {
             marginBottom: "1.75rem",
           }}
         >
-          Comprador Sênior
+          {en ? "Senior Buyer | Strategic Sourcing & Supply Chain" : "Comprador Sênior | Strategic Sourcing e Supply Chain"}
         </p>
 
         {/* Tagline */}
@@ -77,8 +80,9 @@ export default function HeroSection() {
             marginBottom: "2.5rem",
           }}
         >
-          Atuo em compras e strategic sourcing, com experiência em negociação, gestão de fornecedores e análise de custos.
-          Uno processos, dados e tecnologia para apoiar decisões e gerar resultados.
+          {en
+            ? "Procurement professional with approximately 15 years at one organization across strategic sourcing, supplier management, billing, and operations. I combine procurement experience with data and technology to support better decisions."
+            : "Profissional de Compras com aproximadamente 15 anos na mesma organização, atuando em strategic sourcing, gestão de fornecedores, faturamento e operações. Combino experiência em compras, dados e tecnologia para apoiar decisões."}
         </p>
 
         {/* CTAs */}
@@ -101,7 +105,7 @@ export default function HeroSection() {
             onMouseEnter={(e) => (e.currentTarget.style.background = "var(--navy-mid)")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "var(--navy-dark)")}
           >
-            Ver projetos <ArrowRight size={13} />
+            {en ? "View projects" : "Ver projetos"} <ArrowRight size={13} />
           </a>
           <a
             href="/Alessandro_Guimaraes_Pereira_CV.pdf"
@@ -128,7 +132,7 @@ export default function HeroSection() {
               e.currentTarget.style.color = "var(--text-body)";
             }}
           >
-            <Download size={13} /> Baixar currículo
+            <Download size={13} /> {en ? "Download resume" : "Baixar currículo"}
           </a>
         </div>
 

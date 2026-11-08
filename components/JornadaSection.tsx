@@ -1,8 +1,27 @@
 "use client";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
+import { useLanguage } from "@/components/LanguageProvider";
 
-const etapas = [
+const etapas = {
+  en: [
+    {
+      periodo: "May 2022 – May 2026",
+      fase: "Senior Buyer | Diplomata Logística e Transportes",
+      descricao: "Managed the procurement department, Excel data governance, supplier onboarding and sourcing, market research, and contract negotiations for fuel, parts, equipment, and services.",
+    },
+    {
+      periodo: "Mar 2022 – May 2022",
+      fase: "Billing Specialist | Diplomata Logística e Transportes",
+      descricao: "Managed the billing process, reconciled billed amounts and accruals, prepared monthly KPI reports, and supported audits and quality controls.",
+    },
+    {
+      periodo: "May 2011 – Mar 2022",
+      fase: "Billing Supervisor | Diplomata Logística e Transportes",
+      descricao: "Led a five-person team, reviewed daily reports, and coordinated with Sales, Operations, and Finance. Helped maintain a 100% service level with the largest customer.",
+    },
+  ],
+  pt: [
   {
     periodo: "05/2022 – 05/2026",
     fase: "Comprador Sênior | Diplomata Logística e Transportes",
@@ -21,9 +40,13 @@ const etapas = [
     descricao:
       "Liderança de equipe de cinco pessoas, revisão de relatórios diários e integração com Vendas, Operações e Finanças. Alinhamento da equipe e das áreas para manter 100% de nível de serviço com o maior cliente.",
   },
-];
+  ],
+};
 
 export default function JornadaSection() {
+  const { language } = useLanguage();
+  const en = language === "en";
+  const etapasAtuais = en ? etapas.en : etapas.pt;
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
@@ -40,13 +63,13 @@ export default function JornadaSection() {
       }}
     >
       <div style={{ maxWidth: 1024, margin: "0 auto" }}>
-        <p className="label" style={{ marginBottom: "1.5rem" }}>Experiência</p>
+        <p className="label" style={{ marginBottom: "1.5rem" }}>{en ? "Experience" : "Experiência"}</p>
         <h2 className="section-heading" style={{ marginBottom: "3.5rem" }}>
-          Experiência profissional
+          {en ? "Professional experience" : "Experiência profissional"}
         </h2>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-          {etapas.map((etapa, i) => (
+          {etapasAtuais.map((etapa, i) => (
             <div
               key={i}
               style={{

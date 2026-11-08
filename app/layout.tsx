@@ -1,48 +1,33 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-playfair",
-  display: "swap",
-});
+import { LanguageProvider } from "@/components/LanguageProvider";
 
 export const metadata: Metadata = {
-  title: "Alessandro Guimarães Pereira | Comprador Sênior",
+  title: "Alessandro Guimarães Pereira | Senior Buyer & Procurement Professional",
   description:
-    "Comprador Sênior com experiência em compras industriais, strategic sourcing, supply chain, Power BI e SAP.",
+    "Senior Buyer based in Brazil with experience in strategic sourcing, supplier development, procurement analytics, Power BI, and SAP. Open to remote opportunities with U.S. teams hiring in Brazil.",
   keywords: [
-    "compras estratégicas", "supply chain", "strategic sourcing", "Power BI",
-    "SAP", "procurement", "análise de dados", "inteligência artificial",
-    "Alessandro Pereira", "comprador sênior", "compras estratégicas"
+    "Senior Buyer", "Procurement Analyst", "Strategic Sourcing", "Supply Chain",
+    "Procurement Analytics", "Power BI", "SAP", "Alessandro Pereira",
+    "remote procurement Brazil", "supplier development"
   ],
   authors: [{ name: "Alessandro Guimarães Pereira" }],
   creator: "Alessandro Guimarães Pereira",
   openGraph: {
     type: "website",
-    locale: "pt_BR",
+    locale: "en_US",
     url: "https://portifolio-ten-nu-b9tokwo17n.vercel.app/",
-    title: "Alessandro Guimarães Pereira | Comprador Sênior",
-    description: "Experiência em compras industriais, negociação, strategic sourcing, supply chain, Power BI e SAP.",
-    siteName: "Alessandro G. Pereira — Portfólio",
+    title: "Alessandro Guimarães Pereira | Senior Buyer & Procurement Professional",
+    description: "Strategic sourcing, supplier development, procurement analytics, and supply chain experience.",
+    siteName: "Alessandro G. Pereira — Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alessandro Guimarães Pereira | Comprador Sênior",
-    description: "Comprador Sênior com experiência em compras industriais e supply chain.",
+    title: "Alessandro Guimarães Pereira | Senior Buyer",
+    description: "Senior Buyer with experience in strategic sourcing, procurement, and supply chain.",
   },
   robots: {
     index: true,
@@ -56,13 +41,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
-        <ThemeProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <LanguageProvider>
+          <ThemeProvider>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

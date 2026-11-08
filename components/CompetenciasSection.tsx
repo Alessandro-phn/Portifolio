@@ -1,8 +1,15 @@
 "use client";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
+import { useLanguage } from "@/components/LanguageProvider";
 
-const grupos = [
+const grupos = {
+  en: [
+    { titulo: "Procurement & Supply Chain", itens: ["Strategic sourcing", "Negotiation and supplier management", "Contract management", "Direct and indirect procurement", "ABC analysis and total cost of ownership (TCO)", "Market research", "International logistics"] },
+    { titulo: "Data & Systems", itens: ["Advanced Excel", "Power BI and Power Query", "SAP MM", "SAP S/4HANA Cloud — Sourcing & Procurement", "Data governance and business intelligence", "React, Next.js, and TypeScript", "Supabase and PostgreSQL", "Git, GitHub, Vercel, and Docker", "Generative AI"] },
+    { titulo: "Leadership & Process Improvement", itens: ["Team leadership", "KPIs and management reporting", "Internal controls and audits", "Kaizen and continuous improvement", "Kanban and Just-in-Time", "Operations and Finance coordination"] },
+  ],
+  pt: [
   {
     titulo: "Compras e Supply Chain",
     itens: [
@@ -40,9 +47,13 @@ const grupos = [
       "Integração com Operações e Finanças",
     ],
   },
-];
+  ],
+};
 
 export default function CompetenciasSection() {
+  const { language } = useLanguage();
+  const en = language === "en";
+  const gruposAtuais = en ? grupos.en : grupos.pt;
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
@@ -59,9 +70,9 @@ export default function CompetenciasSection() {
       }}
     >
       <div style={{ maxWidth: 1024, margin: "0 auto" }}>
-        <p className="label" style={{ marginBottom: "1.5rem" }}>Competências</p>
+        <p className="label" style={{ marginBottom: "1.5rem" }}>{en ? "Skills" : "Competências"}</p>
         <h2 className="section-heading" style={{ marginBottom: "3rem" }}>
-          Áreas de atuação
+          {en ? "Areas of expertise" : "Áreas de atuação"}
         </h2>
 
         <div
@@ -71,7 +82,7 @@ export default function CompetenciasSection() {
             gap: "2.5rem",
           }}
         >
-          {grupos.map((grupo, i) => (
+          {gruposAtuais.map((grupo, i) => (
             <div key={i}>
               <div
                 style={{

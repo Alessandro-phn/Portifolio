@@ -1,7 +1,10 @@
 "use client";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const { language } = useLanguage();
+  const en = language === "en";
 
   return (
     <footer
@@ -31,7 +34,7 @@ export default function Footer() {
             letterSpacing: "-0.01em",
           }}
         >
-          Alessandro G. Pereira
+          {en ? "Procurement & Supply Chain" : "Compras e Supply Chain"}
         </p>
 
         <div style={{ display: "flex", gap: "2rem" }}>
@@ -65,7 +68,7 @@ export default function Footer() {
             color: "rgba(255,255,255,0.25)",
           }}
         >
-          © {year} Alessandro Guimarães Pereira
+          © {year} Alessandro Guimarães Pereira · {en ? "Based in Brazil" : "Baseado no Brasil"}
         </p>
       </div>
     </footer>

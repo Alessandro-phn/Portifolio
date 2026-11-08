@@ -1,8 +1,17 @@
 "use client";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
+import { useLanguage } from "@/components/LanguageProvider";
 
-const kpis = [
+const kpis = {
+  en: [
+    { valor: "30%", label: "Average cost reduction in truck parts", detalhe: "While maintaining the quality of purchased materials." },
+    { valor: "26%", label: "Average cost reduction in mechanical and electrical services", detalhe: "Along with extended payment terms." },
+    { valor: "2.36%", label: "Average reduction in diesel procurement cost", detalhe: "Achieved through fuel purchasing." },
+    { valor: "100%", label: "Service level with the largest customer", detalhe: "Maintained through team and cross-functional alignment." },
+    { valor: "BRL 45K → 12.5K", label: "Purchase price reduction", detalhe: "Achieved by identifying alternative suppliers." },
+  ],
+  pt: [
   {
     valor: "30%",
     label: "Redução média em peças para caminhões",
@@ -23,9 +32,14 @@ const kpis = [
     label: "Nível de serviço com o maior cliente",
     detalhe: "Alcançado com alinhamento da equipe e das áreas.",
   },
-];
+    { valor: "R$ 45 mil → R$ 12,5 mil", label: "Redução no valor de uma compra", detalhe: "Obtida com a identificação de fornecedores alternativos." },
+  ],
+};
 
 export default function ResultadosSection() {
+  const { language } = useLanguage();
+  const en = language === "en";
+  const kpisAtuais = en ? kpis.en : kpis.pt;
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
@@ -42,9 +56,9 @@ export default function ResultadosSection() {
       }}
     >
       <div style={{ maxWidth: 1024, margin: "0 auto" }}>
-        <p className="label" style={{ marginBottom: "1.5rem" }}>Resultados</p>
+        <p className="label" style={{ marginBottom: "1.5rem" }}>{en ? "Results" : "Resultados"}</p>
         <h2 className="section-heading" style={{ marginBottom: "3rem" }}>
-          Números documentados em compras
+          {en ? "Procurement results" : "Números documentados em compras"}
         </h2>
 
         <div
@@ -56,7 +70,7 @@ export default function ResultadosSection() {
             border: "1px solid var(--border)",
           }}
         >
-          {kpis.map((kpi, i) => (
+          {kpisAtuais.map((kpi, i) => (
             <div
               key={i}
               style={{
